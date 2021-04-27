@@ -1,5 +1,6 @@
 # Demo
 
+* what's in a "base image"?
 * how to build a container: Dockerfile
 * Docker container file system scopes / networking
 * Docker / Singularity conversion
