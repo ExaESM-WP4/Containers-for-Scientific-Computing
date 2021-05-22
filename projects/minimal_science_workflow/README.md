@@ -19,6 +19,8 @@ docker run -v ${PWD}:/work minimal-science-workflow:latest
 Data:
 ```shell
 $ head -n 5 data/data.csv 
+```
+```
 79,39
 29,49
 95,65
@@ -29,6 +31,8 @@ $ head -n 5 data/data.csv
 Output:
 ```shell
 $ docker run -v $PWD:/work minimal-science-workflow:latest
+```
+```
                                                                                
   100 +--------------------------------------------------------------------+   
       |A  A  +      +      +A   A +      +     +      +      +      +      |   
