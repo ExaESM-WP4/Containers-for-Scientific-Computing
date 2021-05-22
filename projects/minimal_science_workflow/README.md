@@ -63,4 +63,4 @@ $ docker run -v $PWD:/work minimal-science-workflow:latest
 
 1. Explain how gnuplot could read the data. (Hint: Play with the `-v` argument to `docker run`.)
 
-2. ...
+2. Here you can feed arbitrary data into `gnuplot`. What if you'd also like to change the script that does the plot?
