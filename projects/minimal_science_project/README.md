@@ -18,14 +18,14 @@ docker run -v ${PWD}:/work minimal-science-workflow:latest
 
 Data:
 ```shell
-$ head -n 5 data/data.csv 
+$ head -n 5 data/data.dat
 ```
 ```
-0,9
-1,172
-2,194
-3,348
-4,418
+0 9
+1 172
+2 194
+3 348
+4 418
 ```
 
 Output:
@@ -36,7 +36,7 @@ $ docker run -v $PWD:/work minimal-science-workflow:latest
                                                                                
   1500 +-------------------------------------------------------------------+   
        |      +      +     +      +      +      +      +     +      +      |   
-       |                                     "/work/data/data.csv"    A    |   
+       |                                     "/work/data/data.dat"    A    |   
   1000 |-+           A A AAA                                             +-|   
        |          AA  A      AAA                                           |   
        |       A A                                                         |   

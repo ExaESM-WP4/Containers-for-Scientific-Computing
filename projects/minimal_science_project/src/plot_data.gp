@@ -1,6 +1,5 @@
-# Set to ASCII output
+# use ascii output
 set terminal dumb
 
-# plot comma separated data
-set datafile separator ","
-plot "/work/data/data.csv"
+# and plot
+plot "/work/data/data.dat"
