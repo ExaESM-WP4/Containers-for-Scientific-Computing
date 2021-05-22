@@ -1,6 +1,6 @@
-# Minimal scientific workflow
+# Minimal science project
 
-We'll use [gnuplot](https://en.wikipedia.org/wiki/Gnuplot) to analyse (mainly plot) a simple data file.
+We'll use [gnuplot](https://en.wikipedia.org/wiki/Gnuplot) to analyse (plot) a simple data file.
 
 ## Build
 
