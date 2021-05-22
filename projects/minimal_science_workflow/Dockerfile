@@ -1,8 +1,6 @@
-FROM ubuntu:20.04
+FROM alpine:latest
 
-ENV DEBIAN_FRONTEND=noninteractive
-
-RUN apt update && apt install --force-yes --yes gnuplot-nox
+RUN apk add --no-cache gnuplot
 
 RUN mkdir -p /app
 COPY src/plot_data.gp /app/.
