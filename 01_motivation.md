@@ -46,6 +46,15 @@ In [1]:
 Windows desktop,
 
 ```
+Windows PowerShell
+Copyright (C) Microsoft Corporation. All rights reserved.
+PS V:\> docker pull jupyter/base-notebook
+PS V:\> docker run -it jupyter/base-notebook ipython
+Python 3.9.2 | packaged by conda-forge | (default, Feb 21 2021, 05:02:46) 
+Type 'copyright', 'credits' or 'license' for more information
+IPython 7.24.1 -- An enhanced Interactive Python. Type '?' for help.
+
+In [1]: 
 ```
 
 Shared workstation,
