@@ -2,4 +2,5 @@
 set terminal dumb
 
 # and plot
-plot "/work/data.dat"
+filename=ARG1
+plot filename

@@ -1,66 +1,60 @@
 # Minimal science project
 
-We'll use [gnuplot](https://en.wikipedia.org/wiki/Gnuplot) to analyse (plot) a simple data file.
+Consider a scientific project that consists of two steps: A _"simulation"_ which produces data, and a _"data analysis"_.
 
-## Build
+## Simulation — Running a compiled software which produces some data
 
-```shell
-$ docker build . -t minimal-science-workflow:latest
+This could, e.g., be a physical or biological simulation. Here, we'll use a [small program written in Fortran](create_data.F90) which produces a data sets with a sinus-shaped signal and some added noise.
+
+The data look like this:
+```
+   15.0000000       0.644502997    
+   30.0000000       1.54576778    
+   45.0000000       2.07850647    
+   ...             ...
+   330.000000      -1.68714190    
+   345.000000      -0.620180488    
+   360.000000       9.53099951E-02
 ```
 
-## Run
+## Data analysis
 
-```shell
-docker run -v ${PWD}:/work minimal-science-workflow:latest
-```
+This could be a script or a set of scripts which produce figures for a publication or reduced data like mean and standard deviations of the input data. Here, we'll use [`gnuplot`](https://en.wikipedia.org/wiki/Gnuplot) to run [a script](plot_data.gp) which plots the sinus-shaped data produced in step A.
 
-## Data and output
-
-Data:
-```shell
-$ head -n 5 data.dat
+The resulting plot looks like this:
 ```
-```
-0 9
-1 172
-2 194
-3 348
-4 418
-```
-
-Output:
-```shell
-$ docker run -v $PWD:/work minimal-science-workflow:latest
-```
-```
-                                                                               
-  1500 +-------------------------------------------------------------------+   
-       |      +      +     +      +      +      +      +     +      +      |   
-       |                                     "/work/data/data.dat"    A    |   
-  1000 |-+           A A AAA                                             +-|   
-       |          AA  A      AAA                                           |   
-       |       A A                                                         |   
-       |      A                  AA                                        |   
-   500 |-+  A                       A                                    +-|   
-       |   A                         A                                     |   
-       |A A                           A A                                  |   
-     0 |-+                                                               +-|   
-       |                                 AA                               A|   
-       |                                    A                         AAA  |   
-  -500 |-+                                   A  A                        +-|   
-       |                                      A  A                 AA      |   
-       |                                           A            A          |   
-       |                                            AA A     A A A         |   
- -1000 |-+                                              AA AA            +-|   
-       |                                                                   |   
-       |      +      +     +      +      +      +      +     +      +      |   
- -1500 +-------------------------------------------------------------------+   
-       0      5      10    15     20     25     30     35    40     45     50  
+                                                                            
+  4 +----------------------------------------------------------------------+   
+    |        +        +        +        +       +        +        +        |   
+  3 |-+          A  A                                   "data.dat"    A  +-|   
+    |                  A                                                   |   
+    |       A  A         A                                                 |   
+  2 |-+                     A                                            +-|   
+    |                          A                                           |   
+  1 |-+  A                                                               +-|   
+    |  A                         A                                         |   
+    |                                                                      |   
+  0 |-+                             A                               A    +-|   
+    |                                                            A         |   
+ -1 |-+                                A                                 +-|   
+    |                                                          A           |   
+    |                                    A                                 |   
+ -2 |-+                                     A                            +-|   
+    |                                                       A              |   
+ -3 |-+                                        A       A A               +-|   
+    |                                            A  A                      |   
+    |        +        +        +        +       +        +        +        |   
+ -4 +----------------------------------------------------------------------+   
+    0        50      100      150      200     250      300      350      400  
 
 ```
 
-## Exercises
+## Hands-on details
 
-1. Explain how gnuplot could read the data. (Hint: Play with the `-v` argument to `docker run`.)
+- Use the latest stable [Ubuntu Linux container image](https://hub.docker.com/_/ubuntu): `ubtuntu:21.04`
 
-2. Here you can feed arbitrary data into `gnuplot`. What if you'd also like to change the script that does the plot?
+- Make sure you have the Fortran compiler gfrotran (package name is `gfortran`) and Gnuplot (package name `gnuplot-nox`) installed. Installation can be done by running `apt update` and `apt install -y <package1> <package2>` in the container.
+
+- Compile the software using: `gfortran create_data.F90 -o create_data` Then run the software with: `./create data` To redirect the output into a data file called `data.dat`, use: `./create_data > data.dat`.
+
+- Plot the data with: `gnuplot plot_data.gp`
