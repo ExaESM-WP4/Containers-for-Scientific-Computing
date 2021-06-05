@@ -2,4 +2,4 @@
 set terminal dumb
 
 # and plot
-plot "/work/data/data.dat"
+plot "/work/data.dat"

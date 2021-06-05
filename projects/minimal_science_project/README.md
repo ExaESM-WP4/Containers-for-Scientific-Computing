@@ -18,7 +18,7 @@ docker run -v ${PWD}:/work minimal-science-workflow:latest
 
 Data:
 ```shell
-$ head -n 5 data/data.dat
+$ head -n 5 data.dat
 ```
 ```
 0 9
