@@ -21,8 +21,9 @@ Your personal (and your research group's) scientific productivity,
 Suppose you want to do a data analysis on a machine, where you do not already have a suitable software environment installed.
 With containerized environments, it's extremely simple to (1) get started on your local machine, as well as to (2) scale a task out to another, e.g. bigger machine, or to share an environment to (3) have your colleague build upon an analysis you have already done.
 
-Here, we "install" a fully identical IPython software environment, as provided with the [Jupyter Docker stacks](https://jupyter-docker-stacks.readthedocs.io/en/latest/index.html) via [Dockerhub](https://hub.docker.com/r/jupyter/base-notebook) as an example.
-Only two shell commands are necessary to get get started on a Linux, MacOS or Windows machine, as well as e.g. on a multi-user workstation.
+We cover sharing of a containerized environment later in more detail.
+Here, we start with "installing" a fully identical IPython software environment, as provided with the [Jupyter Docker stacks](https://jupyter-docker-stacks.readthedocs.io/en/latest/index.html) via [Dockerhub](https://hub.docker.com/r/jupyter/base-notebook) as an example.
+Only two shell commands are necessary for this on a Linux, MacOS or Windows machine, as well as e.g. on a shared workstation.
 
 Your Linux desktop with Docker,
 
