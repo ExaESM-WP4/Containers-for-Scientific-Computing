@@ -1,10 +1,24 @@
 # What is a container?
 
-## Conceptual perspective
+## High-level conceptual perspective
+
+* isolated runtime environment for “applications” w/ system dependencies, but w/o the kernel (unlike VMs!)
+* simplifies “application” development, and deployment, and strongly improves portability
 
 ## Brief historical perspective
 
+* chroot (1979/82) <— birth
+* FreeBSD jail (2000) <— usability
+* LXC (2008) <— popularity
+* Docker (2013) <— community
+* Singularity (2015) <— science adoption?
+(see e.g. [here](https://en.wikipedia.org/wiki/OS-level_virtualization) and [there](https://www.section.io/engineering-education/history-of-container-technology/) and [many more](https://www.google.com/search?q=history+of+container+technology))
+
 ## Technical perspective
+
+* user processes
+* Linux kernel w/ file system
+* hardware layer
 
 ## Hands-on part
 
@@ -17,7 +31,7 @@ $ uname -a
 Linux morpheus 5.8.0-50-generic #56~20.04.1-Ubuntu SMP Mon Apr 12 21:46:35 UTC 2021 x86_64 x86_64 x86_64 GNU/Linux
 ```
 
-file system structure,
+File system structure,
 
 ```
 $ ls -l /
@@ -51,7 +65,7 @@ $ ls /home
 khoeflich
 ```
 
-Now, download one of the above Linux base images from Dockerhub,
+Now, download the above Ubuntu Linux base image from Dockerhub,
 
 ```
 $ docker pull ubuntu:21.04
@@ -66,16 +80,15 @@ $ docker run -it --rm ubuntu:21.04 bash
 and familiarize yourself with the available software environment,
 
 ```
-$ docker run -it --rm ubuntu:21.04 bash
 root@131fa759eb1b:/# ls -l /
 root@131fa759eb1b:/# ls /home
 root@131fa759eb1b:/# cat /etc/os-release
 ```
 
-Do this also for the Alpine Linux base images! What is different, what is the same?
+Do this also for the Alpine Linux base image! What is different, what is the same?
 
-Please note, Docker desktop on MacOS and Windows is shipped with a Linux virtual machine, that runs in the background and provides you with full Docker functionality.
-Especially at Windows PowerShell, however, you can't natively run a command such as `uname`.
+Please note, Docker desktop on MacOS and Windows is shipped with a Linux virtual machine, that runs in the background and provides you with Docker functionality.
+Especially at Windows, however, you can't natively run a Unix-like command such as `uname` in your host system's PowerShell environment.
 Can you still demonstrate the core concept of "shared Linux kernel" and "unique software environment" for a Windows machine? If so, how?
 
 ## Key points
