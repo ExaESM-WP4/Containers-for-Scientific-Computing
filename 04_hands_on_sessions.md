@@ -10,20 +10,20 @@ Use an existing base image (`ubuntu:21.04`), install a software necessary to dow
 
 Installation can be done with `apt update` followed by `apt intall -y <package> <package> ...`.
 
-Let's use this image: <https://upload.wikimedia.org/wikipedia/commons/1/15/Container_Ship_%27Ever_Given%27_stuck_in_the_Suez_Canal%2C_Egypt_-_March_24th%2C_2021_cropped.jpg>
+Let's use this graphics file: <https://upload.wikimedia.org/wikipedia/commons/d/df/Container_01_KMJ.jpg>
 
 To download the image, run 
 ```shell
-curl https://upload.wikimedia.org/wikipedia/commons/1/15/Container_Ship_%27Ever_Given%27_stuck_in_the_Suez_Canal%2C_Egypt_-_March_24th%2C_2021_cropped.jpg -o eg.jpg
+curl https://upload.wikimedia.org/wikipedia/commons/d/df/Container_01_KMJ.jpg -o container.jpg
 ```
 
 To convert the image to, e.g., PNG, run:
 ```shell
-convert eg.jpg eg.png
+convert container.jpg container.png
 ```
 (The `convert` command is part of the `imagemagick` suite.)
 
-To check if the file format really changed, compare the output of `identify eg.jpg` with that of `identify eg.png`.
+To check if the file format really changed, compare the output of `identify container.jpg` with that of `identify container.png`.
 (The `identify` command is part of the `imagemagick` suite.)
 
 ### Discussion
@@ -95,6 +95,14 @@ We'll also need bind mounts to make available the data to `convert` running with
 
 ### Task
 
-This will show different ways of deploying container images.
+This will show different ways of deploying container images to either a registry or to a local file.
+
+...
+
+## F: Singularity
+
+### Task
+
+This will use an image in the registry and an image that has been exported to a local file and run the container with Singularity.
 
 ...
