@@ -1,10 +1,11 @@
 # Motivation behind using containers
 
-Reproducibility of your scientific work,
+Containers may help with **reproducibility** of your scientific work,
 
 > **Scholarly research has evolved significantly over the past decade, but the same cannot be said for the methods by which research processes are captured and disseminated.** The primary method for dissemination - the scholarly publication - is largely unchanged since the advent of the scientific journal in the 1660s. This is no longer sufficient to verify, reproduce, and extend scientific results. Despite the increasing recognition of the need to share all aspects of the research process, scholarly publications today are often disconnected from the underlying analysis and, crucially, the computational environment that produced the findings. **For research to be reproducible, researchers must publish and distribute the entire contained analysis, not just its results.** The analysis should be mobile. **Mobility of Compute is defined as the ability to define, create, and maintain a workflow locally while remaining confident that the workflow can be executed elsewhere.** In essence, mobility of compute means being able to contain the entire software stack, from data files up through the library stack, and reliably move it from system to system. Any research that is limited to where it can be deployed is instantly limited in the extent that it can be reproduced. (from [The Turing Way](https://the-turing-way.netlify.app/reproducible-research/renv.html#science))
 
-Your personal (and your research group's) scientific productivity,
+And containers may help increasing your personal (and your research group's) **scientific productivity**,
+
 * especially by simplifying workflow aspects around "the lifecycle of a scientific idea" (after Perez 2017, [the architecture of Jupyter](https://www.youtube.com/watch?v=dENc0gwzySc))
   * individual exploratory work
   * collaborative developments
@@ -21,7 +22,7 @@ Suppose you want to do a data analysis on a machine, where you do not already ha
 With containerized environments, it's extremely simple to (1) get started on your local machine, as well as to (2) scale a task out to another, e.g. bigger machine, or to (3) share an environment with your colleague who wants to build upon an analysis you have already started.
 
 We cover sharing of containerized software environments later in more detail.
-For a start, here we demonstrate the "installion" of a fully identical IPython software environment on a Linux, MacOS and Windows machine, as well as e.g. on a shared workstation. IPython is provided with the [Jupyter Docker stacks](https://jupyter-docker-stacks.readthedocs.io/en/latest/index.html), which are provided by [Dockerhub](https://hub.docker.com/r/jupyter/base-notebook) a very popular container sharing platform.
+For a start, here we demonstrate the "installation" of a fully identical IPython software environment on a Linux, MacOS and Windows machine, as well as e.g. on a shared workstation. IPython is provided with the [Jupyter Docker stacks](https://jupyter-docker-stacks.readthedocs.io/en/latest/index.html), which are provided by [Dockerhub](https://hub.docker.com/r/jupyter/base-notebook), a very popular container sharing platform.
 Only two commands are necessary to pull and start-up the software environment.
 
 Your Linux desktop with Docker,
@@ -121,4 +122,4 @@ In [1]:
 
 # Goal of this workshop
 
-Accelerate your "scientific productivity" (and scientific work's reproducibility) by covering the basics of container technology, as well as a few considerations around scientific workflows from a container perspective.
+Accelerate your "scientific productivity" (and increase your scientific work's reproducibility) by covering the basics of container technology, as well as a few considerations around scientific workflows from a container perspective.
