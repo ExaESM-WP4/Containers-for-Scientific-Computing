@@ -10,8 +10,9 @@
 * chroot (1979/82) <— birth
 * FreeBSD jail (2000) <— usability
 * LXC (2008) <— popularity
-* Docker (2013) <— community
-* Singularity (2015) <— science adoption?
+* **Docker (2013) <— community**
+* **Singularity (2015) <— science adoption?**
+
 (see e.g. [here](https://en.wikipedia.org/wiki/OS-level_virtualization) and [there](https://www.section.io/engineering-education/history-of-container-technology/) and [many more](https://www.google.com/search?q=history+of+container+technology))
 
 ## Technical perspective
