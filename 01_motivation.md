@@ -5,16 +5,15 @@ Reproducibility of your scientific work,
 > **Scholarly research has evolved significantly over the past decade, but the same cannot be said for the methods by which research processes are captured and disseminated.** The primary method for dissemination - the scholarly publication - is largely unchanged since the advent of the scientific journal in the 1660s. This is no longer sufficient to verify, reproduce, and extend scientific results. Despite the increasing recognition of the need to share all aspects of the research process, scholarly publications today are often disconnected from the underlying analysis and, crucially, the computational environment that produced the findings. **For research to be reproducible, researchers must publish and distribute the entire contained analysis, not just its results.** The analysis should be mobile. **Mobility of Compute is defined as the ability to define, create, and maintain a workflow locally while remaining confident that the workflow can be executed elsewhere.** In essence, mobility of compute means being able to contain the entire software stack, from data files up through the library stack, and reliably move it from system to system. Any research that is limited to where it can be deployed is instantly limited in the extent that it can be reproduced. (from [The Turing Way](https://the-turing-way.netlify.app/reproducible-research/renv.html#science))
 
 Your personal (and your research group's) scientific productivity,
-
-* reduction of your individual "time-to-scientific-insight"
-  * daily perspective, e.g. [Jupyter start-up times](https://nbviewer.jupyter.org/github/ExaESM-WP4/Jupyter-HPC-performance/blob/fa725c1f3656f81c78254946f97a9c1764908e53/analysis.ipynb) on distributed storage machines
-  * project perspective, e.g. being independent of the software environments on shared user machines and their potential downtimes
-  * ...
-* especially by simplification of workflow aspects around "the lifecycle of a scientific idea" (after Perez 2017, [the architecture of Jupyter](https://www.youtube.com/watch?v=dENc0gwzySc))
+* especially by simplifying workflow aspects around "the lifecycle of a scientific idea" (after Perez 2017, [the architecture of Jupyter](https://www.youtube.com/watch?v=dENc0gwzySc))
   * individual exploratory work
   * collaborative developments
   * production runs (HPC, workstation, cloud, ...)
   * publication (reproducibly!)
+* specifically, by reducing your individual "time-to-scientific-insight"
+  * daily perspective, e.g. [Jupyter start-up times](https://nbviewer.jupyter.org/github/ExaESM-WP4/Jupyter-HPC-performance/blob/fa725c1f3656f81c78254946f97a9c1764908e53/analysis.ipynb) on distributed storage machines
+  * project perspective, e.g. becoming independent of particular machines and their software
+  * ...
 
 ## Demo
 
