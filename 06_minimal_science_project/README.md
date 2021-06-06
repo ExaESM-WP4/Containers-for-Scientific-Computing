@@ -1,6 +1,6 @@
 # Minimal science project
 
-Consider a scientific project that consists of two steps: A _"simulation"_ which produces data, and a _"data analysis"_.
+Consider a scientific project that consists of two steps: A _"simulation"_ which produces data, and a _"data analysis"_ which tries to make sense of the data.
 
 ## Simulation — Running a compiled software which produces some data
 
@@ -53,7 +53,7 @@ The resulting plot looks like this:
 
 - Use the latest stable [Ubuntu Linux container image](https://hub.docker.com/_/ubuntu): `ubtuntu:21.04`
 
-- Make sure you have the Fortran compiler gfrotran (package name is `gfortran`) and Gnuplot (package name `gnuplot-nox`) installed. Installation can be done by running `apt update` and `apt install -y <package1> <package2>` in the container.
+- Make sure you have the Fortran compiler gfrotran (package name is `gfortran`) and Gnuplot (package name `gnuplot-nox`) installed. Installation can be done by running `apt update` and `apt install -y <package1> <package2> ...` in the container.
 
 - Compile the software using: `gfortran create_data.F90 -o create_data` Then run the software with: `./create data` To redirect the output into a data file called `data.dat`, use: `./create_data > data.dat`.
 
