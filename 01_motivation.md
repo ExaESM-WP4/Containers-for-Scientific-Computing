@@ -18,11 +18,11 @@ Your personal (and your research group's) scientific productivity,
 ## Demo
 
 Suppose you want to do a data analysis on a machine, where you do not already have a suitable software environment installed.
-With containerized environments, it's extremely simple to (1) get started on your local machine, as well as to (2) scale a task out to another, e.g. bigger machine, or to share an environment to (3) have your colleague build upon an analysis you have already done.
+With containerized environments, it's extremely simple to (1) get started on your local machine, as well as to (2) scale a task out to another, e.g. bigger machine, or to (3) share an environment with your colleague who wants to build upon an analysis you have already started.
 
-We cover sharing of a containerized environment later in more detail.
-Here, we start with "installing" a fully identical IPython software environment, as provided with the [Jupyter Docker stacks](https://jupyter-docker-stacks.readthedocs.io/en/latest/index.html) via [Dockerhub](https://hub.docker.com/r/jupyter/base-notebook) as an example.
-Only two shell commands are necessary for this on a Linux, MacOS or Windows machine, as well as e.g. on a shared workstation.
+We cover sharing of containerized software environments later in more detail.
+For a start, here we demonstrate the "installion" of a fully identical IPython software environment on a Linux, MacOS and Windows machine, as well as e.g. on a shared workstation. IPython is provided with the [Jupyter Docker stacks](https://jupyter-docker-stacks.readthedocs.io/en/latest/index.html), which are provided by [Dockerhub](https://hub.docker.com/r/jupyter/base-notebook) a very popular container sharing platform.
+Only two commands are necessary to pull and start-up the software environment.
 
 Your Linux desktop with Docker,
 
@@ -121,4 +121,4 @@ In [1]:
 
 # Goal of this workshop
 
-Accelerate your "scientific productivity" (and scientific work's reproducibility) with container technology!
+Accelerate your "scientific productivity" (and scientific work's reproducibility) by covering the basics of container technology, as well as a few considerations around scientific workflows from a container perspective.
