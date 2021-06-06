@@ -83,17 +83,17 @@ and familiarize yourself with the available software environment,
 root@131fa759eb1b:/# ls -l /
 root@131fa759eb1b:/# ls /home
 root@131fa759eb1b:/# cat /etc/os-release
+root@131fa759eb1b:/# uname -a
 ```
 
 Do this also for the Alpine Linux base image! What is different, what is the same?
 
 Please note, Docker desktop on MacOS and Windows is shipped with a Linux virtual machine, that runs in the background and provides you with Docker functionality.
-Especially at Windows, however, you can't natively run a Unix-like command such as `uname` in your host system's PowerShell environment.
-Can you still demonstrate the core concept of "shared Linux kernel" and "unique software environment" for a Windows machine? If so, how?
+Especially for Windows, however, you can't natively run a Unix-like command such as `uname` in your host system's PowerShell environment.
+Can you still demonstrate the core concept of "shared Linux kernel" and "contained software environment" on a Windows machine? If so, how?
 
 ## Key points
 
 ## Next topic
 
 The (scientific) container life cycle perspective.
-
