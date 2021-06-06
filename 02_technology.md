@@ -68,6 +68,7 @@ and familiarize yourself with the available software environment,
 ```
 $ docker run -it --rm ubuntu:21.04 bash
 root@131fa759eb1b:/# ls -l /
+root@131fa759eb1b:/# ls /home
 root@131fa759eb1b:/# cat /etc/os-release
 ```
 
