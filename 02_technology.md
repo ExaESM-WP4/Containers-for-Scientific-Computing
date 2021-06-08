@@ -25,7 +25,7 @@
 
 Let's pull the `alpine:latest` and `Ubuntu:21.04` Linux base images to illustrate the above concepts.
 
-On a Linux machine you can directly have a look at your host system's kernel version,
+On a Linux or OSX machine you can directly have a look at your host system's kernel version,
 
 ```
 $ uname -a
