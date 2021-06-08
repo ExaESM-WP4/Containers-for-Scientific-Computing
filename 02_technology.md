@@ -2,8 +2,8 @@
 
 ## High-level conceptual perspective
 
-* isolated runtime environment for “applications” w/ system dependencies, but w/o the kernel (unlike VMs!)
-* simplifies “application” development, and deployment, and strongly improves portability
+* isolated runtime environment for "applications" including their dependencies but not, unlike VMs, the kernel
+* simplifies "application" development, and deployment, and strongly improves "application" portability
 
 ## Brief historical perspective
 
