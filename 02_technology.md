@@ -7,6 +7,10 @@
 
 ## Brief historical perspective
 
+Containers are not a new technology.
+They were born as a unix system developer tool already during the 1980s.
+[...]
+
 * chroot (1979/82) <— birth
 * FreeBSD jail (2000) <— usability
 * LXC (2008) <— popularity
@@ -17,22 +21,30 @@
 
 ## Technical perspective
 
+The core concept about "what is a container?" from a user perspective is the "shared Linux kernel" and "contained software environment" aspect.
+
 * user processes
 * Linux kernel w/ file system
 * hardware layer
 
-## Hands-on part
+**References**
 
-Let's pull the `alpine:latest` and `Ubuntu:21.04` Linux base images to illustrate the above concepts.
+* https://www.linuxfordevices.com/tutorials/linux/linux-kernel
+* https://www.linux.com/training-tutorials/linux-filesystem-explained/
+* https://www.hpcwire.com/2017/11/01/sc17-singularity-preps-version-3-0-nears-1m-containers-served-daily/
 
-On a Linux or OSX machine you can directly have a look at your host system's kernel version,
+## Hands-on part (5 minutes)
+
+To illustrate this, let's pull the `alpine:latest` and `Ubuntu:21.04` Linux base images.
+
+On a Linux (or OSX machine) you can directly have a look at your host system's kernel version,
 
 ```
 $ uname -a
 Linux morpheus 5.8.0-50-generic #56~20.04.1-Ubuntu SMP Mon Apr 12 21:46:35 UTC 2021 x86_64 x86_64 x86_64 GNU/Linux
 ```
 
-File system structure,
+the file system structure,
 
 ```
 $ ls -l /
@@ -78,7 +90,7 @@ start an interactive Bash session in the container,
 $ docker run -it --rm ubuntu:21.04 bash
 ```
 
-and familiarize yourself with the available software environment,
+and familiarize yourself with the visible software environment,
 
 ```
 root@131fa759eb1b:/# ls -l /
@@ -87,14 +99,16 @@ root@131fa759eb1b:/# cat /etc/os-release
 root@131fa759eb1b:/# uname -a
 ```
 
-Do this also for the Alpine Linux base image! What is different, what is the same?
+Do this also for the Alpine Linux base image and your host system! What is different, what is the same?
 
 Please note, Docker desktop on MacOS and Windows is shipped with a Linux virtual machine, that runs in the background and provides you with Docker functionality.
-Especially for Windows, however, you can't natively run a Unix-like command such as `uname` in your host system's PowerShell environment.
+Especially on Windows, however, you can't natively run a Unix-like command such as `uname` in your host system's PowerShell.
 Can you still demonstrate the core concept of "shared Linux kernel" and "contained software environment" on a Windows machine? If so, how?
 
 ## Key points
 
+[...]
+
 ## Next topic
 
-The (scientific) container life cycle perspective.
+The (scientific) container life cycle.
