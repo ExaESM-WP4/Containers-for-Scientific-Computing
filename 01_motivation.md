@@ -22,7 +22,8 @@ Suppose you want to do a data analysis on a machine, where you do not already ha
 With containerized environments, it's extremely simple to (1) get started on your local machine, as well as to (2) scale a task out to another, e.g. bigger machine, or to (3) share an environment with your colleague who wants to build upon an analysis you have already started.
 
 We cover sharing of containerized software environments later in more detail.
-For a start, here we demonstrate the "installation" of a fully identical IPython software environment on a Linux, MacOS and Windows machine, as well as e.g. on a shared workstation. IPython is provided with the [Jupyter Docker stacks](https://jupyter-docker-stacks.readthedocs.io/en/latest/index.html), which are provided by [Dockerhub](https://hub.docker.com/r/jupyter/base-notebook), a very popular container sharing platform.
+For a start, here we demonstrate the "installation" (or deployment) of a fully identical IPython software environment on a Linux, MacOS and Windows machine, as well as e.g. on a shared workstation and a high-performance computing system.
+IPython is provided with the [Jupyter Docker stacks](https://jupyter-docker-stacks.readthedocs.io/en/latest/index.html), which are provided by [Dockerhub](https://hub.docker.com/r/jupyter/base-notebook), a very popular container sharing platform.
 Only two commands are necessary to pull and start-up the software environment.
 
 Your Linux desktop with Docker,
@@ -112,6 +113,22 @@ Storing signatures
 2021/06/06 14:23:03  info unpack layer: sha256:858f74c5f496e3836098f330b146fd969e28c4475159bb7752a43f1d046c6803
 2021/06/06 14:23:03  info unpack layer: sha256:4f4fb700ef54461cfa02571ae0db9a0dc1e0cdb5577484a6d75e68dc38e8acc1
 INFO:    Creating SIF file...
+$ singularity run base-notebook_latest.sif ipython
+Python 3.9.2 | packaged by conda-forge | (default, Feb 21 2021, 05:02:46) 
+Type 'copyright', 'credits' or 'license' for more information
+IPython 7.24.1 -- An enhanced Interactive Python. Type '?' for help.
+
+In [1]: 
+```
+
+Any high-performance computing system with Singularity,
+
+```
+$ uname -a
+Linux nesh-fe2 4.18.0-193.el8.x86_64 #1 SMP Fri Mar 27 14:35:58 UTC 2020 x86_64 x86_64 x86_64 GNU/Linux
+$ module load singularity/3.5.2
+$ singularity pull docker://jupyter/base-notebook
+[...]
 $ singularity run base-notebook_latest.sif ipython
 Python 3.9.2 | packaged by conda-forge | (default, Feb 21 2021, 05:02:46) 
 Type 'copyright', 'credits' or 'license' for more information
