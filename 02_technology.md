@@ -27,6 +27,8 @@ The core concept about "what is a container?" from a user perspective is the "sh
 * Linux kernel w/ file system
 * hardware layer
 
+<img src="./container-concept.png" width="50%">
+
 **References**
 
 * https://www.linuxfordevices.com/tutorials/linux/linux-kernel
