@@ -22,7 +22,7 @@ For Windows also install Docker desktop,
 
 * https://docs.docker.com/docker-for-windows/install/#install-docker-desktop-on-windows
 
-(Consider **not** to choose the WSL2-backend during the installation, but to go for the default Hyper-V backend initially. WSL2 is more performant, but also a bit more complex to setup and can be added at any later point.)
+(Consider **not** to choose the WSL2-backend during the installation, but to go for the default Hyper-V backend initially. While WSL2 is more performant, it is a bit more complex to setup. Luckily, it can be added at any later point.)
 
 Please note, there won't be time to discuss problems with installing Docker during the beginning of the course.
 Please also note, you will need administrator privileges on your machine to successfully install Docker.
