@@ -23,7 +23,7 @@ Create a file called `Dockerfile` with the following contents:
 ```Dockerfile
 FROM ubuntu:21.04
 
-RUN apt update && apt install -y curl imagemagick file
+RUN apt update && apt install -y curl imagemagick
 ```
 
 Then, being in the (otherwise empty directory that holds the `Dockerfile`), run
@@ -56,30 +56,39 @@ $ docker run -it --rm --volume $PWD:/work --workdir /work my-convert-image bash
 $ ls eg.*  # will display the two files
 ```
 
-## D: Bundle as an app?
-### Possible solution
+## D.1: Deploy via registry
 
-A `Dockerfile` which only has `imagemagick` installed and that has an entrypoint:
-```Dockerfile
-FROM ubuntu:21.04
-
-RUN apt update && apt install -y imagemagick
-
-ENTRYPOINT ["convert"]
-```
-
-Then, build with:
+With the image built above, first tag the image and then push it
 ```shell
-$ docker build . -t my-convert-container
+$ docker tag my-convert-image willirath/2021-06-container-intro-course:convert-image
+$ docker push willirath/2021-06-container-intro-course:convert-image
 ```
-Now, let's download the JPG outside of the container and just do the conversion in the container:
+
+Pulling and running the image amounts to:
 ```shell
-$ curl https://upload.wikimedia.org/wikipedia/commons/d/df/Container_01_KMJ.jpg -o container.jpg
-$ docker run --rm -v $PWD:/work -w /work my-convert-container:latest container.jpg container.png
-$ identify container.jpg  # if installed on your host system
-$ identify container.png  # if installed on your host system
+$ docker pull willirath/2021-06-container-intro-course:convert-image
+$ docker run -it --rm --volume $PWD:/work --workdir /work willirath/2021-06-container-intro-course:convert-image
+# curl https://upload.wikimedia.org/wikipedia/commons/d/df/Container_01_KMJ.jpg -o container.jpg
+# convert container.jpg container.png
+# identify container.jpg
+# identify container.png
+# exit
 ```
 
-## E: Deploy
+## D.2: Deploy via file
 
-...
+With the image built above, save the container to a tar archive:
+```shell
+$ docker save my-convert-image --output my-convert-image.tar
+```
+
+Re-loading and running the image amounts to:
+```shell
+$ docker load --input my-convert-image.tar
+$ docker run -it --rm --volume $PWD:/work --workdir my-convert-image
+# curl https://upload.wikimedia.org/wikipedia/commons/d/df/Container_01_KMJ.jpg -o container.jpg
+# convert container.jpg container.png
+# identify container.jpg
+# identify container.png
+# exit
+```
