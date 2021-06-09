@@ -4,7 +4,8 @@ Singularity is a container platform that provides,
 
 * mobility of compute via a single-file container image format that is very natural to migrate, execute, share and archive
 * a security model suitable for shared machines, i.e. users execute containers as themselves and don't need and can't get root privileges
-* per default optimization for "integration" rather than "isolation" of the containerized software, i.e. it's very easy to use the host network and file system
+* per default optimization for "integration" rather than "isolation" of the containerized software
+  * it's very easy to use the host network and file system (also GPUs! but that is true also for Docker, actually...)
 
 ## Docker/Singularity CLI
 
