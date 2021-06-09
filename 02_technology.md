@@ -106,11 +106,3 @@ Do this also for the `ubuntu:21.04` image and your host system! What is differen
 Please note, Docker desktop on MacOS and Windows is shipped with a Linux virtual machine, that runs in the background and provides you with Docker functionality.
 Especially on Windows, however, you can't natively run a Unix-like command such as `uname` in your host system's PowerShell.
 Can you still demonstrate the core concept of "shared Linux kernel" and "contained software environment" on a Windows machine? If so, how?
-
-## Key points
-
-[...]
-
-## Next topic
-
-The (scientific) container life cycle.
