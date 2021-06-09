@@ -32,8 +32,9 @@ To check if the file format really changed, compare the output of `identify cont
 
 ### Discussion
 
+- Are the graphic files still there when you exit the container and start it again with `docker run`?
+- How do you properly restart a stopped container? 
 - How to get the graphics file out of the container? — We'll skip this for now and come back to this question later.
-- ...
 
 ## B: Specification and Building
 
@@ -62,9 +63,9 @@ RUN <command>
 
 ### Task
 
-Make available the file-system of your computer within the container.
+Make the file-system of your computer available to the container.
 
-This will show how to get data in and out of the container. We've already seen that from within the container, we can access the network / the internet. For many _industry_ applications using the network for interacting with the environment is all that is needed. For a scientific data-analysis context, file-system acces is, however, essential.
+This will show how to get data in and out of the container. We've already seen that from within the container, we can access the network / the internet. For many _industry_ applications using the network for interacting with the environment is all that is needed. For a scientific data-analysis context, file-system acces is, however, often essential.
 
 ### Hints
 
@@ -104,4 +105,4 @@ You can use [`docker save <image-name> --output <archive_name>`](https://docs.do
 
 - While container registries are best used for keeping and providing container images during active use, file-based deployments can be used for archiving or for sharing containers with machines that do not have access to a registry.
 
-- There also is a way of directly importing file-based docker images into Singularity.
+- There is also a way of directly importing file-based docker images into Singularity, which is relevant for multi-user systems.
