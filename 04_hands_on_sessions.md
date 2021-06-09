@@ -72,7 +72,7 @@ Adding the following flags [`--volume $PWD:/work --workdir /work`](https://docs.
 
 ### Discussion
 
-There is no strong conventions about how to name volumes / directories bound into containers. It's wise to avoid any name used in the ((Linux) Filesystem Hierarchy Standard)[https://en.wikipedia.org/wiki/Filesystem_Hierarchy_Standard], however.
+There is no strong conventions about how to name volumes / directories bound into containers. It's wise to avoid any name used in the [(Linux) Filesystem Hierarchy Standard](https://en.wikipedia.org/wiki/Filesystem_Hierarchy_Standard), however.
 
 ## D.1: Deploy (via registry)
 
