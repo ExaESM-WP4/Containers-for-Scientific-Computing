@@ -4,9 +4,11 @@
 
 ### Task
 
-Use an existing base image (`ubuntu:21.04`), install a software necessary to download an image from the internet (`curl`), and a software necessary to convert the image to a different format (`imagemagick`).
+Use an existing base image (`ubuntu:21.04`), start a container with an interactive shell, and install a software necessary to download an image from the internet (`curl`) and a software necessary to convert the image to a different format (`imagemagick`).
 
 ### Hints
+
+Running containers with an interactive shell (here using `bash`) can be done with: `docker run --rm -it <image-name> bash`
 
 Installation can be done with `apt update` followed by `apt intall -y <package> <package> ...`.
 
@@ -70,39 +72,10 @@ Adding the following flags `--volume $PWD:/work --workdir /work` to the `docker 
 
 There is no strong conventions about how to name volumes / directories bound into containers. It's wise to avoid any name used in the ((Linux) Filesystem Hierarchy Standard)[https://en.wikipedia.org/wiki/Filesystem_Hierarchy_Standard], however.
 
-## D: Bundle as an app?
-
-### Task
-
-What if we'd like to bundle the `covert` command into a container-based app that can be called for the sole purpose of converting images?
-
-### Hints
-
-For defining a standard command that is executed when running the container, use 
-```Dockerfile
-ENTRYPOINT ["<command>"]
-```
-Here, `"<command>"` could be `"convert"`.
-
-We'll also need bind mounts to make available the data to `convert` running within the container.
-
-### Discussion
-
-- How to use a different `imagemagick` command? There is, e.g., `identify` which can be used to inspect images.
-- What if we'd like a second container that only executes the `indentify` command? — We should also talk about what this means for image storage.
-
-## E: Deploy
+## D: Deploy
 
 ### Task
 
 This will show different ways of deploying container images to either a registry or to a local file.
-
-...
-
-## F: Singularity
-
-### Task
-
-This will use an image in the registry and an image that has been exported to a local file and run the container with Singularity.
 
 ...

@@ -23,7 +23,7 @@ Create a file called `Dockerfile` with the following contents:
 ```Dockerfile
 FROM ubuntu:21.04
 
-RUN apt update && apt install -y curl imagemagick file
+RUN apt update && apt install -y curl imagemagick
 ```
 
 Then, being in the (otherwise empty directory that holds the `Dockerfile`), run
@@ -56,30 +56,6 @@ $ docker run -it --rm --volume $PWD:/work --workdir /work my-convert-image bash
 $ ls eg.*  # will display the two files
 ```
 
-## D: Bundle as an app?
-### Possible solution
-
-A `Dockerfile` which only has `imagemagick` installed and that has an entrypoint:
-```Dockerfile
-FROM ubuntu:21.04
-
-RUN apt update && apt install -y imagemagick
-
-ENTRYPOINT ["convert"]
-```
-
-Then, build with:
-```shell
-$ docker build . -t my-convert-container
-```
-Now, let's download the JPG outside of the container and just do the conversion in the container:
-```shell
-$ curl https://upload.wikimedia.org/wikipedia/commons/d/df/Container_01_KMJ.jpg -o container.jpg
-$ docker run --rm -v $PWD:/work -w /work my-convert-container:latest container.jpg container.png
-$ identify container.jpg  # if installed on your host system
-$ identify container.png  # if installed on your host system
-```
-
-## E: Deploy
+## D: Deploy
 
 ...
