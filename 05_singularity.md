@@ -40,12 +40,14 @@ $ singularity run my-container-image.sif
 Archive a container image,
 
 ```
-$ docker save ...
+$ docker save local/my-container-image --output my-container-image.tar
 ```
 
 (With Singularity's container image format the archiving aspect is solved naturally.)
 
 ## Singularity build: Stumbling blocks
+
+_Note that there is a lot of development on singularity going on. Expect that the following statements will be outdated very soon and that working with Singularity on MacOS and Windows machines will be just as easy as with Docker Desktop._
 
 * installing Singularity requires a Linux machine and involves compiling the Singularity code base
 * debugging, building and executing Singularity containers is only natively possible on Linux architecture
@@ -68,81 +70,104 @@ As Singularity comes with a lot of ways to convert Docker images to the Singular
 ## Docker container build workflow for Singularity containers
 
 The "advisable" scientific container lifecycle: `docker build` to `singularity run`?
-(This is open for discussion, definitly.)
+(This is open for discussion, definitely.)
 
 ### Specify
 
 Let's specify a container image that contains a Bash (!) script to print a "hello world" message.
-In the Ubuntu base image... but let's use Alpine.
+In the Ubuntu base image Bash is already installed, but let's use Alpine here, so that we need to install something.
 
 ```
 $ cat Dockerfile
 FROM alpine:latest
-RUN ...
-RUN ...
+RUN apk add bash
+RUN echo '#!/bin/bash' > /hello.sh \
+ && echo 'echo "Hello from a container built on MacOS!"' >> /hello.sh \
+ && chmod +x /hello.sh
 ```
 
 ### Build
 
 ```
-$ docker build -t local/hello-from-osx-build-system .
+$ docker build -t local/hello-from-macos .
 ```
 
-### Deploy
-
-There are two options to ...
+Have a look at your local registry,
 
 ```
-$ docker images
-[...]
+$ docker images                                                         
+REPOSITORY                   TAG       IMAGE ID       CREATED         SIZE
+local/hello-from-macos       latest    2ec03757f43b   5 seconds ago   9.74MB
 ```
 
-Remote,
+Make a test run,
 
-* export as Docker tar archive
+```
+$ docker run --rm local/hello-from-macos /hello.sh
+Hello from a container built on MacOS!
+```
+
+### Deploy... and run!
+
+You don't actually need to have Singularity installed on your system to build Singularity containers.
+Having Docker installed you can:
+
+* pull a dockerized Singularity (thanks community!)
+* do the Singularity build directly from your local Docker registry
+* transfer the Singularity image file to the target system
+
+```
+# local machine
+$ docker pull kathoef/docker2singularity:latest
+$ docker run --rm -v /var/run/docker.sock:/var/run/docker.sock -v ${PWD}:/output \
+kathoef/docker2singularity singularity build hello-from-macos.sif docker-daemon://local/hello-from-macos:latest
+$ ls -lh
+-rwxr-xr-x  1 khoeflich  GEOMAR   5.3M Jun  9 14:08 hello-from-macos.sif
+$ scp hello-from-macos.sif ...
+```
+
+```
+# target machine
+$ module load singularity/...
+$ singularity run hello-from-macos.sif /hello.sh
+Hello from a container built on MacOS!
+```
+
+Note, that you could also
+
+* export your container image as a Docker tar archive
 * transfer the tar archive to a machine with Singularity
-* do a Singularity build on that machine
+* do a Singularity build from the tar archive on the target machine
 
 ```
 # local machine
-$ docker ...
-$ ls -h ...
-$ scp ...
-# target machine
-$ module load singularity/...
-$ singularity build
+$ docker save local/hello-from-macos --output hello-from-macos.tar
+$ scp hello-from-macos.tar ...
 ```
-
-Local,
-
-* pull a dockerized Singularity
-* do the Singularity build directly on your local Docker machine
-* transfer the Singularity image file
-
-```
-# local machine
-$ docker pull ...
-$ docker run ...
-$ ls -h
-$ scp ...
-```
-
-This has the advantage of transfering a much smaller file!
-
-### Run
 
 ```
 # target machine
-$ module load singularity/...
-$ singularity run
+$ singularity build hello-from-macos.sif docker-archive://hello-from-macos.tar
+INFO:    Starting build...
+Getting image source signatures
+Copying blob b2d5eeeaba3a done
+Copying blob c33f491601cb done
+Copying blob 4b7cacb5f751 done
+Copying config b7469f518f done
+Writing manifest to image destination
+Storing signatures
+2021/06/09 22:18:32  info unpack layer: sha256:d12dd637fd61a233bdb43ff256513c0704ceb2d4d1d8e40d75c8b4a0128dc976
+2021/06/09 22:18:32  info unpack layer: sha256:d1b09556f2eedc3a9044cd5788a9efdf602382391249dc576e5e30db3cac5d7e
+2021/06/09 22:18:32  info unpack layer: sha256:b4d2b1ee81c66d77659d89d01ca64bcba9345e1d82bfd4f52b74db8f7e6c4a93
+INFO:    Creating SIF file...
+INFO:    Build complete: hello-from-macos.sif
 ```
 
-## Considerations: Singularity containers via Docker
+Doing the Singularity build on your local machine has the advantage of transfering a much smaller file!
+(Because the Docker layer structure is collapsed during conversion and SIF files are compressed.)
 
-Building Singularity container images with Docker is possible, and only comes with very few considerations.
-
-what to keep in mind for specifying Docker containers to be used with Singularity
-there is also official docs on this!
-
-stumbling blocks,
-* many ready-to-use container images are only build with Docker, but not with Singularity in mind, e.g. Jupyter Docker stacks
+```
+$ ls -lh
+-rwxr-xr-x  1 khoeflich  GEOMAR   5.3M Jun  9 14:08 hello-from-macos.sif
+-rw-------  1 khoeflich  GEOMAR   9.6M Jun  9 14:17 hello-from-macos.tar
+```
