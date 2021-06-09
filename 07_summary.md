@@ -49,3 +49,6 @@
   - Multi-stage builds
   - Controlling build context
   - Target different architectures
+- From Docker to Singularity
+  - Many pre-existing Docker images were built with Docker but not with Singularity in mind.
+  - There's a few considerations to make it easier to use Docker images with Singularity.
