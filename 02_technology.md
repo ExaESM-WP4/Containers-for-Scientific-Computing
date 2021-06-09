@@ -83,13 +83,13 @@ khoeflich
 Now, download the above Ubuntu Linux base image from Dockerhub,
 
 ```
-$ docker pull ubuntu:21.04
+$ docker pull alpine:latest
 ```
 
 start an interactive Bash session in the container,
 
 ```
-$ docker run -it --rm ubuntu:21.04 bash
+$ docker run -it --rm alpine:latest /bin/sh
 ```
 
 and familiarize yourself with the visible software environment,
@@ -101,7 +101,7 @@ root@131fa759eb1b:/# cat /etc/os-release
 root@131fa759eb1b:/# uname -a
 ```
 
-Do this also for the Alpine Linux base image and your host system! What is different, what is the same?
+Do this also for the `ubuntu:21.04` image and your host system! What is different, what is the same?
 
 Please note, Docker desktop on MacOS and Windows is shipped with a Linux virtual machine, that runs in the background and provides you with Docker functionality.
 Especially on Windows, however, you can't natively run a Unix-like command such as `uname` in your host system's PowerShell.
