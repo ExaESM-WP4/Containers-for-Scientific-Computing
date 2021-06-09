@@ -2,10 +2,12 @@
 
 Singularity is a container platform that provides,
 
-* mobility of compute via a single-file container image format that is very natural to migrate, execute, share and archive
-* a security model suitable for shared machines, i.e. users execute containers as themselves and don't need and can't get root privileges
-* per default optimization for "integration" rather than "isolation" of the containerized software
-  * it's very easy to use the host network and file system (also GPUs! but that is true also for Docker, actually...)
+* mobility of compute via the single-file SIF container image format 
+  * very natural to migrate, execute, share and archive!
+* a security / permission model that is suitable for shared machines (such as HPC, or a group's workstation)
+  * users execute containers as themselves and don't need / can't get root privileges on the host
+* optimization for "integration" rather than "isolation" of containerized software with the host system
+  * it's very easy to use the host's network and file system (also available GPUs! but that is true also for Docker, actually...)
 
 ## Docker/Singularity CLI
 
@@ -47,9 +49,9 @@ With Singularity's single-file container image format the archiving aspect is so
 
 why use docker for building singularity images?
 
-## Advisable workflow
+## Workflow demo
 
-The scientific (!) container lifecycle: `docker build` to `singularity run`.
+The advisable scientific (!) container lifecycle: `docker build` to `singularity run`.
 
 ### Specify
 
@@ -119,7 +121,7 @@ $ module load singularity/...
 $ singularity run
 ```
 
-## Considerations: Singularity via Docker
+## Considerations: Singularity containers via Docker
 
 what to keep in mind for specifying Docker containers to be used with Singularity
 there is also official docs on this!
