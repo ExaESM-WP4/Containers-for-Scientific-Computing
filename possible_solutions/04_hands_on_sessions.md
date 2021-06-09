@@ -5,7 +5,7 @@
 ### Possible Solution
 
 ```shell
-$ docker run -it --rm ubuntu:21.04 bash
+$ docker run -it ubuntu:21.04 bash
 # apt update
 # apt install curl imagemagick
 # curl https://upload.wikimedia.org/wikipedia/commons/d/df/Container_01_KMJ.jpg -o container.jpg
@@ -14,6 +14,16 @@ $ docker run -it --rm ubuntu:21.04 bash
 # identify container.png
 # exit
 ```
+Repeating the `docker run` creates a new container from the same image. This new container is not affected by the changes you made to the first container created. You can see the existing containers on your system by runnig
+```shell
+$ docker container ls -a
+```
+Docker automatically assignes names to the containers. You can use the name of the first container to start it again interactively and verify that the graphic files are still present.
+```shell
+$ docker start -i NAME_OF_THE_CONTAINER
+# ls -la
+```
+Note that you can force docker to automatically remove any stopped container by providing the `--rm` flag to `docker run`.
 
 ## B: Specification and Building
 

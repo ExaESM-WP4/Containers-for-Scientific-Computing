@@ -55,8 +55,16 @@ The resulting plot looks like this:
 
 - Use the latest stable [Ubuntu Linux container image](https://hub.docker.com/_/ubuntu): `ubtuntu:21.04`
 
-- Make sure you have the Fortran compiler gfrotran (package name is `gfortran`) and Gnuplot (package name `gnuplot-nox`) installed. Installation can be done by running `apt update` and `apt install -y <package1> <package2> ...` in the container.
+- First set up the container interactively:
 
-- Compile the software using: `gfortran create_data.F90 -o create_data` Then run the software with: `./create data` To redirect the output into a data file called `data.dat`, use: `./create_data > data.dat`.
+   - Make sure you have the Fortran compiler gfrotran (package name is `gfortran`) and Gnuplot (package name `gnuplot-nox`) installed. Installation can be done by running `apt update` and `apt install -y <package1> <package2> ...` in the container.
 
-- Plot the data with: `gnuplot plot_data.gp`
+   - Compile the software using: `gfortran create_data.F90 -o create_data` Then run the software with: `./create data` To redirect the output into a data file called `data.dat`, use: `./create_data > data.dat`.
+
+   - Plot the data with: `gnuplot plot_data.gp`
+
+- Now write a `Dockerfile` to set up the container up to the point where the data can be created
+  
+  Hint: You need to copy the files `create_data.F90` and `plt_data.gp` into the container during the build process
+
+- Whenever the container is run, the data shall be written to the host file system and the plot shall be generated
