@@ -56,6 +56,39 @@ $ docker run -it --rm --volume $PWD:/work --workdir /work my-convert-image bash
 $ ls eg.*  # will display the two files
 ```
 
-## D: Deploy
+## D.1: Deploy via registry
 
-...
+With the image built above, first tag the image and then push it
+```shell
+$ docker tag my-convert-image willirath/2021-06-container-intro-course:convert-image
+$ docker push willirath/2021-06-container-intro-course:convert-image
+```
+
+Pulling and running the image amounts to:
+```shell
+$ docker pull willirath/2021-06-container-intro-course:convert-image
+$ docker run -it --rm --volume $PWD:/work --workdir /work willirath/2021-06-container-intro-course:convert-image
+# curl https://upload.wikimedia.org/wikipedia/commons/d/df/Container_01_KMJ.jpg -o container.jpg
+# convert container.jpg container.png
+# identify container.jpg
+# identify container.png
+# exit
+```
+
+## D.2: Deploy via file
+
+With the image built above, save the container to a tar archive:
+```shell
+$ docker save my-convert-image --output my-convert-image.tar
+```
+
+Re-loading and running the image amounts to:
+```shell
+$ docker load --input my-convert-image.tar
+$ docker run -it --rm --volume $PWD:/work --workdir my-convert-image
+# curl https://upload.wikimedia.org/wikipedia/commons/d/df/Container_01_KMJ.jpg -o container.jpg
+# convert container.jpg container.png
+# identify container.jpg
+# identify container.png
+# exit
+```

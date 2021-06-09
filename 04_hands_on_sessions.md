@@ -84,9 +84,11 @@ _(Note that for pushing, you'd need an account at a registry. So the pushing par
 
 ### Hints
 
+Tagging images can be done with [`docker tag ...`](https://docs.docker.com/engine/reference/commandline/tag/).
+
 Pushing to a registry is as easy as running [`docker push`](https://docs.docker.com/engine/reference/commandline/push/).
 
-You can [`docker pull <image-name>[:<tag>]`](https://docs.docker.com/engine/reference/commandline/pull/) an image and then run it as if you tagged it locally with [`docker run ... <image-nane>[:<tag>]`](https://docs.docker.com/engine/reference/commandline/run/)
+You can [`docker pull <image-name>`](https://docs.docker.com/engine/reference/commandline/pull/) an image and then run it as if you tagged it locally with [`docker run ... <image-name>`](https://docs.docker.com/engine/reference/commandline/run/)
 
 ## D.2: Deploy (via files)
 
