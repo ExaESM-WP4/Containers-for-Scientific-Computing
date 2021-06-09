@@ -1,15 +1,56 @@
 # Singularity
 
-docker versus singularity versus docker
+Singularity is a container platform that provides,
+
+* mobility of compute via a single-file container image format that is very natural to migrate, execute, share and archive
+* a security model suitable for shared machines, i.e. users execute containers as themselves and don't need and can't get root privileges
+* per default optimization for "integration" rather than "isolation" of the containerized software, i.e. it's very easy to use the host network and file system
+
+## Docker/Singularity CLI
+
+During the hands-on part you have already used Docker commands to pull, specify, build, run and archive a container (image).
+Basically, each of these have an equivalent command in Singularity on the machines you might be using.
+
+Pull some container image from a remote registry,
+
+```
+$ docker pull ubuntu:21.04
+$ singularity pull docker://ubuntu:21.04
+```
+
+Build a container image (after specification),
+
+```
+$ docker build -t my-container-image -f Dockerfile .
+$ singularity build --fakeroot my-container-image.sif my-container-image-specs.txt
+```
+
+(For [details on Singularity definition files](https://sylabs.io/guides/3.7/user-guide/definition_files.html) see their official docs.)
+
+Run a containerized software,
+
+```
+$ docker run -it --rm ... my-container-image
+$ singularity run ... my-container-image.sif
+```
+
+Archive a container image,
+
+```
+$ docker save ...
+```
+
+With Singularity's single-file container image format the archiving aspect is solved naturally.
+
+### Caveats
 
 why use docker for building singularity images?
 
-## Workflow
+## Advisable workflow
 
-The scientific container lifecycle: From `docker build` to `singularity run`.
-(We don't cover the debugging, archival and/or reproduction steps here explicitly.)
+The scientific (!) container lifecycle: `docker build` to `singularity run`.
 
-### Specification
+### Specify
 
 Let's specify a container image that contains a Bash (!) script to print a "hello world" message.
 In the Ubuntu base image... but let's use Alpine.
@@ -21,13 +62,13 @@ RUN ...
 RUN ...
 ```
 
-### Building
+### Build
 
 ```
 $ docker build -t local/hello-from-osx-build-system .
 ```
 
-### Deployment
+### Deploy
 
 There are two options to ...
 
@@ -77,7 +118,7 @@ $ module load singularity/...
 $ singularity run
 ```
 
-## Considerations
+## Considerations: Singularity via Docker
 
 what to keep in mind for specifying Docker containers to be used with Singularity
 there is also official docs on this!
