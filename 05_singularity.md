@@ -14,18 +14,18 @@ Singularity is a container platform that provides,
 During the hands-on part you have already used Docker commands to pull, specify, build, run and archive a container (image).
 Basically, each of these have an equivalent command in Singularity on the machines you might be using.
 
-Pull some container image from a remote registry,
+Pull container images from a remote registry,
 
 ```
 $ docker pull ubuntu:21.04
 $ singularity pull docker://ubuntu:21.04
 ```
 
-Build a container image (after specification),
+Build a container image after specification (on a machine you own),
 
 ```
-$ docker build -t my-container-image -f Dockerfile .
-$ singularity build --fakeroot my-container-image.sif my-container-image-specs.txt
+$ docker build -t local/my-container-image -f Dockerfile .
+$ singularity build --fakeroot my-container-image.sif my-container-image.txt
 ```
 
 (For [details on Singularity definition files](https://sylabs.io/guides/3.7/user-guide/definition_files.html) see their official docs.)
@@ -33,8 +33,8 @@ $ singularity build --fakeroot my-container-image.sif my-container-image-specs.t
 Run a containerized software,
 
 ```
-$ docker run -it --rm ... my-container-image
-$ singularity run ... my-container-image.sif
+$ docker run -it --rm local/my-container-image
+$ singularity run my-container-image.sif
 ```
 
 Archive a container image,
@@ -43,15 +43,31 @@ Archive a container image,
 $ docker save ...
 ```
 
-With Singularity's single-file container image format the archiving aspect is solved naturally.
+(With Singularity's container image format the archiving aspect is solved naturally.)
 
-### Caveats
+## Singularity build: Stumbling blocks
 
-why use docker for building singularity images?
+* installing Singularity requires a Linux machine and involves compiling the Singularity code base
+* debugging, building and executing Singularity containers is only natively possible on Linux machines
+* building Singularity containers requires root privileges and is therefore not possible on shared machines
 
-## Workflow demo
+```
+$ singularity build my-container-image.sif my-container-image.txt
+FATAL:   You must be the root user, however you can use --remote or --fakeroot to build from a Singularity recipe file
+$ singularity build --fakeroot my-container-image.sif my-container-image.txt
+FATAL:   could not use fakeroot: no mapping entry found in /etc/subuid for username
+$ singularity build --remote my-container-image.sif my-container-image.txt
+FATAL:   Unable to submit build job: no authentication token, log in with `singularity remote login`
+```
 
-The advisable scientific (!) container lifecycle: `docker build` to `singularity run`.
+You could get yourself access to the [Syslabs.io cloud remote builder](https://cloud.sylabs.io/).
+(However, building remotely might be rather tedious, also the storage of this service is currently limited to an about 11GB quota.)
+
+As Singularity comes with a lot of ways to convert Docker images to the Singularity container image format one can fully go around the "Singularity build" problem by utilizing Docker only (and it's community, and the portability problems they have already solved.)
+
+## Docker container build workflow for Singularity containers
+
+The "advisable" scientific container lifecycle: `docker build` to `singularity run`.
 
 ### Specify
 
@@ -122,6 +138,8 @@ $ singularity run
 ```
 
 ## Considerations: Singularity containers via Docker
+
+Building Singularity container images with Docker is possible, and only comes with very few considerations.
 
 what to keep in mind for specifying Docker containers to be used with Singularity
 there is also official docs on this!
