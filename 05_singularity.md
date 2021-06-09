@@ -2,12 +2,12 @@
 
 Singularity is a container platform that provides,
 
-* mobility of compute via the single-file SIF container image format 
+* mobility of compute via a single-file SIF container image format 
   * very natural to migrate, execute, share and archive!
-* a security / permission model that is suitable for shared machines (such as HPC, or a group's workstation)
-  * users execute containers as themselves and don't need / can't get root privileges on the host
-* optimization for "integration" rather than "isolation" of containerized software with the host system
-  * it's very easy to use the host's network and file system (also available GPUs! but that is true also for Docker, actually...)
+* a permission model that is suitable for shared machines (such as HPC, group's workstation, ...)
+  * users execute containers as themselves and don't need and/or can't get root privileges on the host per default
+* optimization for "integration" with the host system, rather than "isolation" from the host system
+  * it's very easy to use the host's network and file system (plus available GPUs! which is also possible with Docker, though)
 
 ## Docker/Singularity CLI
 
@@ -48,7 +48,7 @@ $ docker save ...
 ## Singularity build: Stumbling blocks
 
 * installing Singularity requires a Linux machine and involves compiling the Singularity code base
-* debugging, building and executing Singularity containers is only natively possible on Linux machines
+* debugging, building and executing Singularity containers is only natively possible on Linux architecture
 * building Singularity containers requires root privileges and is therefore not possible on shared machines
 
 ```
@@ -60,14 +60,15 @@ $ singularity build --remote my-container-image.sif my-container-image.txt
 FATAL:   Unable to submit build job: no authentication token, log in with `singularity remote login`
 ```
 
-You could get yourself access to the [Syslabs.io cloud remote builder](https://cloud.sylabs.io/).
-(However, building remotely might be rather tedious, also the storage of this service is currently limited to an about 11GB quota.)
+You could get yourself access to the [Syslabs.io remote builder](https://cloud.sylabs.io/).
+(This seems very nice, however, building remotely might be rather tedious also the storage of this service is currently limited to about 11GB quota. More severe might be the aspect of adding further local files to the container during build?)
 
-As Singularity comes with a lot of ways to convert Docker images to the Singularity container image format one can fully go around the "Singularity build" problem by utilizing Docker only (and it's community, and the portability problems they have already solved.)
+As Singularity comes with a lot of ways to convert Docker images to the Singularity container image format one can fully go around the "Singularity build" problem, however, by utilizing Docker only (and it's community knowledge and the portability problems they have already solved.)
 
 ## Docker container build workflow for Singularity containers
 
-The "advisable" scientific container lifecycle: `docker build` to `singularity run`.
+The "advisable" scientific container lifecycle: `docker build` to `singularity run`?
+(This is open for discussion, definitly.)
 
 ### Specify
 
@@ -127,7 +128,6 @@ $ scp ...
 ```
 
 This has the advantage of transfering a much smaller file!
-Also, you do not have to rely on the build functionality of the target system, which may not have the everything "activated".
 
 ### Run
 
