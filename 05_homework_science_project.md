@@ -1,6 +1,6 @@
-# Minimal science project
+# Homework: Minimal science project
 
-_All pre-existing materials you might need are in: [`06_minimal_science_project/`](06_minimal_science_project/)_
+_All pre-existing materials you might need are in: [`05_homework_science_project/`](05_homework_science_project/)_
 
 Consider a scientific project that consists of two steps: A _"simulation"_ which produces data, and a _"data analysis"_ which tries to make sense of the data.
 
