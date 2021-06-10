@@ -7,7 +7,7 @@ Singularity is a container platform that provides,
 * a permission model that is suitable for shared machines (such as HPC, group's workstation, ...)
   * users execute containers as themselves and don't need and/or can't get root privileges on the host per default
 * optimization for "integration" with the host system, rather than "isolation" from the host system
-  * it's very easy to use the host's network and file system (plus available GPUs! which is also possible with Docker, though)
+  * it's very easy to use the host's network and file system (plus available GPUs! which is also possible with Docker, though...)
 
 ## Docker/Singularity CLI
 
@@ -28,7 +28,7 @@ $ docker build -t local/my-container-image -f Dockerfile .
 $ singularity build --fakeroot my-container-image.sif my-container-image.txt
 ```
 
-(For [details on Singularity definition files](https://sylabs.io/guides/3.7/user-guide/definition_files.html) see their official docs.)
+(For [details on Singularity definition files](https://sylabs.io/guides/3.7/user-guide/definition_files.html) and [differences to Dockerfiles](https://sylabs.io/guides/3.7/user-guide/singularity_and_docker.html#singularity-definition-file-vs-dockerfile) see the official Singularity docs.)
 
 Run a containerized software,
 
@@ -47,7 +47,7 @@ $ docker save local/my-container-image --output my-container-image.tar
 
 ## Singularity build: Stumbling blocks
 
-_Note that there is a lot of development on singularity going on. Expect that the following statements will be outdated very soon and that working with Singularity on MacOS and Windows machines will be just as easy as with Docker Desktop._
+_Note that there is a lot of development on Singularity (docs) going on. Expect that the following statements will be outdated very soon and that working with Singularity on MacOS and Windows machines will be just as easy as with Docker Desktop._
 
 * installing Singularity requires a Linux machine and involves compiling the Singularity code base
 * debugging, building and executing Singularity containers is only natively possible on Linux architecture
@@ -63,19 +63,20 @@ FATAL:   Unable to submit build job: no authentication token, log in with `singu
 ```
 
 You could get yourself access to the [Syslabs.io remote builder](https://cloud.sylabs.io/).
-(This seems very nice, however, building remotely might be rather tedious also the storage of this service is currently limited to about 11GB quota. More severe might be the aspect of adding further local files to the container during build?)
+(While the existence of such a service is quite nice, debugging/building remotely might become rather tedious quickly. Also the storage for your container images is currently limited to only about 11GB quota. More severe might be the aspect of how to add further local files to the container image during the build? Not tested, though.)
 
-As Singularity comes with a lot of ways to convert Docker images to the Singularity container image format one can fully go around the "Singularity build" problem, however, by utilizing Docker only (and it's community knowledge and the portability problems they have already solved.)
+As Singularity comes with a lot of ways to convert Docker images to the Singularity container image format one can fully go around the "Singularity build" problem, however, by utilizing Docker only (and the Docker community's knowledge.)
 
 ## Docker container build workflow for Singularity containers
 
 The "advisable" scientific container lifecycle: `docker build` to `singularity run`?
-(This is open for discussion, definitely.)
+
+(If this is the really the "advisable" way is open for discussion, though.)
 
 ### Specify
 
-Let's specify a container image that contains a Bash (!) script to print a "hello world" message.
-In the Ubuntu base image Bash is already installed, but let's use Alpine here, so that we need to install something.
+Let's specify a container image that contains a Bash (!) script that prints a "hello world" message.
+In the Ubuntu base image Bash is already installed, let's use Alpine here so that we are forced to install a software.
 
 ```
 $ cat Dockerfile
@@ -112,7 +113,7 @@ Hello from a container built on MacOS!
 You don't actually need to have Singularity installed on your system to build Singularity containers.
 Having Docker installed you can:
 
-* pull a dockerized Singularity (thanks community!)
+* pull a dockerized Singularity (thanks Docker and Singularity community!)
 * do the Singularity build directly from your local Docker registry
 * transfer the Singularity image file to the target system
 
@@ -175,7 +176,7 @@ $ ls -lh
 ## Docker/Singularity compatibility
 
 Per default, Docker container images run "isolated" and "writable", while Singularity container images run "integrated" and "read-only".
-If you want a Docker image to be compatible with the Singularity runtime assumptions, consider the following aspects for your `Dockerfile`:
+If you want a Docker image to be compatible with Singularity runtime assumptions, consider the following aspects for your `Dockerfile`:
 
 * do not install any libraries (other than what is installed via e.g. `apt install...`) and/or scripts
  * in a typical Linux file system locations like e.g. `/opt` (i.e. rather use `/my-software` or `/my-script.sh`)
