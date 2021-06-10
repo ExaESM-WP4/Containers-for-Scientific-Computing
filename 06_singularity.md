@@ -67,11 +67,10 @@ You could get yourself access to the [Syslabs.io remote builder](https://cloud.s
 
 As Singularity comes with a lot of ways to convert Docker images to the Singularity container image format one can fully go around the "Singularity build" problem, however, by utilizing Docker only (and the Docker community's knowledge.)
 
-## Docker container build workflow for Singularity containers
+## Docker build workflow for Singularity containers
 
 The "advisable" scientific container lifecycle: `docker build` to `singularity run`?
-
-(If this is the really the "advisable" way is open for discussion, though.)
+(If this is really the "advisable" way depends on your specific use case and is open for discussion, though. If you need Docker and Singularity container types for your project, it's currently the most simple way. Converting from Singularity to Docker images is possible, but not very convenient.)
 
 ### Specify
 
@@ -187,4 +186,4 @@ If you want a Docker image to be compatible with Singularity runtime assumptions
  * do not use Alpine as base image for your projects
  * use CentOS/Ubuntu/Debian base images that are neither too new, nor too old (see [here](https://github.com/ExaESM-WP4/Batch-scheduler-Singularity-bindings) for a use case where this problem came up for ourselves)
 
-(This is a filtered list from [here](https://github.com/singularityhub/docker2singularity#tips-for-making-docker-images-compatible-with-singularity) with aspects added from a few "lessons learned" during the use of containerized Jupyter and Dask jobqueue software environments on HPC systems.)
+(This is a filtered list from [here](https://github.com/singularityhub/docker2singularity#tips-for-making-docker-images-compatible-with-singularity) with aspects added from a few "lessons learned" during our use of containerized Jupyter and Dask jobqueue software environments on HPC systems.)
