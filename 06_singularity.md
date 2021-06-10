@@ -163,8 +163,8 @@ INFO:    Creating SIF file...
 INFO:    Build complete: hello-from-macos.sif
 ```
 
-Doing the Singularity build on your local machine has the advantage of transfering a much smaller file!
-(Because the Docker layer structure is collapsed during conversion and SIF files are compressed.)
+Doing the Singularity build on your local machine has the advantage of transfering a much smaller file, though.
+(Because the Docker layer structure is collapsed during conversion and SIF files itself are compressed.)
 
 ```
 $ ls -lh
