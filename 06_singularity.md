@@ -133,6 +133,8 @@ $ singularity run hello-from-macos.sif /hello.sh
 Hello from a container built on MacOS!
 ```
 
+### Alternative conversion workflow
+
 Note, that you could also
 
 * export your container image as a Docker tar archive
@@ -178,12 +180,12 @@ Per default, Docker container images run "isolated" and "writable", while Singul
 If you want a Docker image to be compatible with Singularity runtime assumptions, consider the following aspects for your `Dockerfile`:
 
 * do not install any libraries (other than what is installed via e.g. `apt install...`) and/or scripts
- * in a typical Linux file system locations like e.g. `/opt` (i.e. rather use `/my-software` or `/my-script.sh`)
- * in the container environment's home folders, i.e. `$HOME` or `/root`
+  * in a typical Linux file system locations like e.g. `/opt` (i.e. rather use `/my-software` or `/my-script.sh`)
+  * in the container environment's home folders, i.e. `$HOME` or `/root`
 * make use of Dockerfile instructions, i.e. `ENV` to specify your software locations (do not use e.g. `.bashrc`)
 * do not rely on having runtime write permissions to a file system location other than `$HOME` or `/tmp` (plus locations you manually bind mount)
 * to enable yourself to use (i.e. "mount") also software from the host system
- * do not use Alpine as base image for your projects
- * use CentOS/Ubuntu/Debian base images that are neither too new, nor too old (see [here](https://github.com/ExaESM-WP4/Batch-scheduler-Singularity-bindings) for a use case where this problem came up for ourselves)
+  * do not use Alpine as base image for your projects
+  * use CentOS/Ubuntu/Debian base images that are neither too new, nor too old (see [here](https://github.com/ExaESM-WP4/Batch-scheduler-Singularity-bindings) for a use case where this problem came up for ourselves)
 
 (This is a filtered list from [here](https://github.com/singularityhub/docker2singularity#tips-for-making-docker-images-compatible-with-singularity) with aspects added from a few "lessons learned" during our use of containerized Jupyter and Dask jobqueue software environments on HPC systems.)
