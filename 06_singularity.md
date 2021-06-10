@@ -47,7 +47,7 @@ $ docker save local/my-container-image --output my-container-image.tar
 
 ## Singularity build: Stumbling blocks
 
-_Note that there is a lot of development on Singularity (docs) going on. Expect that the following statements will be outdated very soon and that working with Singularity on MacOS and Windows machines will be just as easy as with Docker Desktop._
+_Note that there is a lot of development on Singularity (and their docs!) going on. Expect that the following statements will be outdated very soon and that working with Singularity on MacOS and Windows machines will be just as easy as with Docker Desktop._
 
 * installing Singularity requires a Linux machine and involves compiling the Singularity code base
 * debugging, building and executing Singularity containers is only natively possible on Linux architecture
