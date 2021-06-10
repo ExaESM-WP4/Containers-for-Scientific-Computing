@@ -182,10 +182,11 @@ If you want a Docker image to be compatible with Singularity runtime assumptions
 * do not install any libraries (other than what is installed via e.g. `apt install...`) and/or scripts
   * in a typical Linux file system locations like e.g. `/opt` (i.e. rather use `/my-software` or `/my-script.sh`)
   * in the container environment's home folders, i.e. `$HOME` or `/root`
+  * (see the [(Linux) Filesystem Hierarchy Standard](https://en.wikipedia.org/wiki/Filesystem_Hierarchy_Standard) for a list of paths that should be avoided)
 * make use of Dockerfile instructions, i.e. `ENV` to specify your software locations (do not use e.g. `.bashrc`)
 * do not rely on having runtime write permissions to a file system location other than `$HOME` or `/tmp` (plus locations you manually bind mount)
 * to enable yourself to use (i.e. "mount") also software from the host system
-  * do not use Alpine as base image for your projects
-  * use CentOS/Ubuntu/Debian base images that are neither too new, nor too old (see [here](https://github.com/ExaESM-WP4/Batch-scheduler-Singularity-bindings) for a use case where this problem came up for ourselves)
+  * do not use Alpine as base image for your projects because of incompatibilities between Alpine `libc` and typical HPC host `libc`s
+  * use CentOS/Ubuntu/Debian base images that are neither too new, nor too old (see [here](https://github.com/ExaESM-WP4/Batch-scheduler-Singularity-bindings) for an HPC use case where this problem came up for ourselves)
 
-(This is a filtered list from [here](https://github.com/singularityhub/docker2singularity#tips-for-making-docker-images-compatible-with-singularity) with aspects added from a few "lessons learned" during our use of containerized Jupyter and Dask jobqueue software environments on HPC systems.)
+(This is a filtered list from [here](https://github.com/singularityhub/docker2singularity#tips-for-making-docker-images-compatible-with-singularity) with aspects added from a few "lessons learned" during our own use of containerized Jupyter and Dask jobqueue software environments on HPC systems.)
