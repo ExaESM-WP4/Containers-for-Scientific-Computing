@@ -5,7 +5,7 @@
 ### Possible Solution
 
 ```shell
-$ docker run -it ubuntu:21.04 bash
+$ docker run -it ubuntu:22.04 bash
 # apt update
 # apt install curl imagemagick
 # curl https://upload.wikimedia.org/wikipedia/commons/d/df/Container_01_KMJ.jpg -o container.jpg
@@ -31,7 +31,7 @@ Note that you can force docker to automatically remove any stopped container by 
 
 Create a file called `Dockerfile` with the following contents:
 ```Dockerfile
-FROM ubuntu:21.04
+FROM ubuntu:22.04
 
 RUN apt update && apt install -y curl imagemagick
 ```

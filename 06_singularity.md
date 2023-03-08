@@ -17,8 +17,8 @@ Basically, each of these have an equivalent command in Singularity on the machin
 Pull container images from a remote registry,
 
 ```
-$ docker pull ubuntu:21.04
-$ singularity pull docker://ubuntu:21.04
+$ docker pull ubuntu:22.04
+$ singularity pull docker://ubuntu:22.04
 ```
 
 Build a container image after specification (on a machine you own),

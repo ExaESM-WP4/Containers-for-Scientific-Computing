@@ -37,7 +37,7 @@ The core concept about "what is a container?" from a user perspective is the "sh
 
 ## Hands-on part (5 minutes)
 
-To illustrate this, let's pull the `alpine:latest` and `Ubuntu:21.04` Linux base images.
+To illustrate this, let's pull the `alpine:latest` and `ubuntu:22.04` Linux base images.
 
 On a Linux (or OSX machine) you can directly have a look at your host system's kernel version,
 
@@ -101,7 +101,7 @@ root@131fa759eb1b:/# cat /etc/os-release
 root@131fa759eb1b:/# uname -a
 ```
 
-Do this also for the `ubuntu:21.04` image and your host system! What is different, what is the same?
+Do this also for the `ubuntu:22.04` image and your host system! What is different, what is the same?
 
 Please note, Docker desktop on MacOS and Windows is shipped with a Linux virtual machine, that runs in the background and provides you with Docker functionality.
 Especially on Windows, however, you can't natively run a Unix-like command such as `uname` in your host system's PowerShell.
