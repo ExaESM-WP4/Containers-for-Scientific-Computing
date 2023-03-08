@@ -6,7 +6,7 @@ Throughout this part, we'll link the [docker reference docs](https://docs.docker
 
 ### Task
 
-Use an existing base image ([`ubuntu:21.04`](https://hub.docker.com/_/ubuntu)), start a container with an interactive shell, and install a software necessary to download an image from the internet (`curl`) and a software necessary to convert the image to a different format (`imagemagick`).
+Use an existing base image ([`ubuntu:22.04`](https://hub.docker.com/_/ubuntu)), start a container with an interactive shell, and install a software necessary to download an image from the internet (`curl`) and a software necessary to convert the image to a different format (`imagemagick`).
 
 ### Hints
 
