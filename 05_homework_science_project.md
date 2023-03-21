@@ -61,7 +61,7 @@ The resulting plot looks like this:
 
    - Compile the software using: `gfortran create_data.F90 -o create_data` Then run the software with: `./create data` To redirect the output into a data file called `data.dat`, use: `./create_data > data.dat`.
 
-   - Plot the data with: `gnuplot plot_data.gp`
+   - Plot the data with: `gnuplot -c plot_data.gp "data.dat"`
 
 - Now write a `Dockerfile` to set up the container up to the point where the data can be created
   
