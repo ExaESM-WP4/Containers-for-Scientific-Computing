@@ -9,13 +9,14 @@
 
 Containers are not a new technology.
 They were born as a unix system developer tool already during the 1980s.
-[...]
 
 * chroot (1979/82) <— birth
 * FreeBSD jail (2000) <— usability
 * LXC (2008) <— popularity
 * **Docker (2013) <— community**
-* **Singularity (2015) <— science adoption?**
+* **Singularity (2015) <— science and containerized high-performance computing! also: shared machines**
+* Docker rootless (2020) <- Docker for shared machines; but: e.g. GPUs possible?
+* Apptainer (2021) joins the Linux Foundation <- align containerized high-performance computing and cloud technology developments
 
 (see e.g. [here](https://en.wikipedia.org/wiki/OS-level_virtualization) and [there](https://www.section.io/engineering-education/history-of-container-technology/) and [many more](https://www.google.com/search?q=history+of+container+technology))
 
@@ -39,14 +40,14 @@ The core concept about "what is a container?" from a user perspective is the "sh
 
 To illustrate this, let's pull the `alpine:latest` and `ubuntu:22.04` Linux base images.
 
-On a Linux (or OSX machine) you can directly have a look at your host system's kernel version,
+On a Linux (or MacOS machine) you can directly have a look at your host system's kernel version,
 
 ```
 $ uname -a
 Linux morpheus 5.8.0-50-generic #56~20.04.1-Ubuntu SMP Mon Apr 12 21:46:35 UTC 2021 x86_64 x86_64 x86_64 GNU/Linux
 ```
 
-the file system structure,
+the host system's file system structure,
 
 ```
 $ ls -l /
@@ -73,14 +74,14 @@ drwxrwxrwt  18 root root       4096 Jun  6 17:27 tmp
 drwxr-xr-x  14 root root       4096 Jul 31  2020 usr
 drwxr-xr-x  14 root root       4096 Jul 31  2020 var
 ```
-and e.g. user directory contents,
+and e.g. host system's user directory contents,
 
 ```
 $ ls /home
 khoeflich
 ```
 
-Now, download the above Ubuntu Linux base image from Dockerhub,
+Now, download the Alpine base image from Dockerhub,
 
 ```
 $ docker pull alpine:latest
@@ -104,5 +105,7 @@ root@131fa759eb1b:/# uname -a
 Do this also for the `ubuntu:22.04` image and your host system! What is different, what is the same?
 
 Please note, Docker desktop on MacOS and Windows is shipped with a Linux virtual machine, that runs in the background and provides you with Docker functionality.
-Especially on Windows, however, you can't natively run a Unix-like command such as `uname` in your host system's PowerShell.
+What do you expect to find for the respective `uname` commands?
+
+Especially on Windows, you can't natively run a Unix-like command such as `uname` in your host system's PowerShell.
 Can you still demonstrate the core concept of "shared Linux kernel" and "contained software environment" on a Windows machine? If so, how?
