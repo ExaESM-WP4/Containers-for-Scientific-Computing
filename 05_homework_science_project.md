@@ -6,7 +6,7 @@ Consider a scientific project that consists of two steps: A _"simulation"_ which
 
 ## Simulation — Running a compiled software which produces data
 
-This could, e.g., be a physical or biological simulation. Here, we'll use a [small program written in Fortran](create_data.F90) which produces a data sets with a sinus-shaped signal and some added noise.
+This could, e.g., be a physical or biological simulation. Here, we'll use a [small program written in Fortran](05_homework_science_project/create_data.F90) which produces a data sets with a sinus-shaped signal and some added noise.
 
 The data look like this:
 ```
@@ -21,7 +21,7 @@ The data look like this:
 
 ## Data analysis - Visualize the simulation's data
 
-This could be a script or a set of scripts which produce figures for a publication or reduced data like mean and standard deviations of the input data. Here, we'll use [`gnuplot`](https://en.wikipedia.org/wiki/Gnuplot) to run [a script](plot_data.gp) which plots the sinus-shaped data produced in step A.
+This could be a script or a set of scripts which produce figures for a publication or reduced data like mean and standard deviations of the input data. Here, we'll use [`gnuplot`](https://en.wikipedia.org/wiki/Gnuplot) to run [a script](05_homework_science_project/plot_data.gp) which plots the sinus-shaped data produced in step A.
 
 The resulting plot looks like this:
 ```
