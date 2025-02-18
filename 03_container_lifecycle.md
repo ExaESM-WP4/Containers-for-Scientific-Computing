@@ -1,13 +1,13 @@
 # The container lifecycle
 
-The typical container lifecycle consists of four parts which may be grouped into a part dealing with the [container image](https://docs.docker.com/get-started/#what-is-a-container-image) and a part dealing with the [container](https://docs.docker.com/get-started/#what-is-a-container) itself:
+The typical container lifecycle (from an industry containerized software delivery perspective) consists of four parts which may be grouped into a part dealing with the *container image* and a part dealing with the *container* itself:
 
 - Image:
-  - [Specify](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/)
-  - [Build](https://docs.docker.com/engine/reference/commandline/build/)
-  - [Deploy](https://docs.docker.com/develop/develop-images/image_management/)
+  - [Specify](https://docs.docker.com/build/building/best-practices/)
+  - [Build](https://docs.docker.com/reference/cli/docker/buildx/build/)
+  - [Deploy](https://docs.docker.com/reference/cli/docker/image/pull/)
 - Container:
-  - [Run](https://docs.docker.com/engine/reference/commandline/run/)
+  - [Run](https://docs.docker.com/reference/cli/docker/container/run/)
 
 In a scientific-computing setting, we add two parts:
 
