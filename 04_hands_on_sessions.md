@@ -2,6 +2,12 @@
 
 Throughout this part, we'll link the [docker reference docs](https://docs.docker.com/reference/) of which the [docs for the command line interface (CLI)](https://docs.docker.com/engine/reference/commandline/cli/) and the [docs for Dockerfiles](https://docs.docker.com/engine/reference/builder/) are the most important.
 
+## Background
+
+Suppose we have a workflow step that requires pictures to be downloaded from the internet and converted into a different format.
+We might want to script the task, and it might be important to have particular versions of the involved software installed to ensure that we do not need to adapt our script if picture libraries get extended, and software tool developers decide to change their e.g. command-line interfaces.
+We also may want to be able to execute this workflow on different machines, all of which, fortuitously, have Docker or Singularity / Apptainer installed.
+
 ## A: Modification of an existing container
 
 ### Task
