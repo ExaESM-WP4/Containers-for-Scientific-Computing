@@ -4,7 +4,7 @@ _All pre-existing materials you might need are in: [`05_homework_science_project
 
 Consider a scientific project that consists of two steps: A _"simulation"_ which produces data, and a _"data analysis"_ which tries to make sense of the data.
 
-## Simulation — Running a compiled software which produces some data
+## Simulation — Running a compiled software which produces data
 
 This could, e.g., be a physical or biological simulation. Here, we'll use a [small program written in Fortran](create_data.F90) which produces a data sets with a sinus-shaped signal and some added noise.
 
@@ -19,7 +19,7 @@ The data look like this:
    360.000000       9.53099951E-02
 ```
 
-## Data analysis
+## Data analysis - Visualize the simulation's data
 
 This could be a script or a set of scripts which produce figures for a publication or reduced data like mean and standard deviations of the input data. Here, we'll use [`gnuplot`](https://en.wikipedia.org/wiki/Gnuplot) to run [a script](plot_data.gp) which plots the sinus-shaped data produced in step A.
 
@@ -53,18 +53,20 @@ The resulting plot looks like this:
 
 ## Hands-on details
 
-- Use the latest stable [Ubuntu Linux container image](https://hub.docker.com/_/ubuntu): `ubtuntu:21.04`
+- Use the latest stable Ubuntu LTS container image.
+
+  Hint: Compare the [Docker image tags](https://hub.docker.com/_/ubuntu) with the [Ubuntu releases](https://ubuntu.com/about/release-cycle) and choose the newest Ubuntu Long Term Support (LTS) release.
 
 - First set up the container interactively:
 
-   - Make sure you have the Fortran compiler gfrotran (package name is `gfortran`) and Gnuplot (package name `gnuplot-nox`) installed. Installation can be done by running `apt update` and `apt install -y <package1> <package2> ...` in the container.
+   - Make sure you have the Fortran compiler gfortran (package name is `gfortran`) and Gnuplot (package name `gnuplot-nox`) installed. Installation can be done by running `apt update` and `apt install -y <package1> <package2> ...` in the container.
 
-   - Compile the software using: `gfortran create_data.F90 -o create_data` Then run the software with: `./create data` To redirect the output into a data file called `data.dat`, use: `./create_data > data.dat`.
+   - Compile the software using: `gfortran create_data.F90 -o create_data` Then run the software with: `./create data`. To redirect the output into a data file called `data.dat`, use: `./create_data > data.dat`.
 
-   - Plot the data with: `gnuplot -c plot_data.gp "data.dat"`
+   - Plot the data with: `gnuplot -c plot_data.gp "data.dat"`.
 
-- Now write a `Dockerfile` to set up the container up to the point where the data can be created
+- Now write a `Dockerfile` to set up the container up to the point where the data can be created.
   
-  Hint: You need to copy the files `create_data.F90` and `plt_data.gp` into the container during the build process
+  Hint: You need to copy the files `create_data.F90` and `plot_data.gp` into the container during the build process.
 
-- Whenever the container is run, the data shall be written to the host file system and the plot shall be generated
+- Whenever the container is run, the data shall be written to the host file system and the plot shall be generated.
